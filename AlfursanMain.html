@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ALFURSAN Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result span {
+            color: #007bff;
+        }
+
+        .percentage {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .percentage span {
+            color: #007bff;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ALFURSAN Calculator</h1>
+        <div class="form-group">
+            <label for="MilesCost">One Miles Cost</label>
+            <input type="number" id="MilesCost" step="0.001" required>
+        </div>
+        <div class="form-group">
+            <label for="ticketCostByMiles">Ticket Cost By Miles </label>
+            <input type="number" id="ticketCostByMiles" required>
+        </div>
+        <div class="form-group">
+            <label for="taxes">Taxes</label>
+            <input type="number" id="taxes" required>
+        </div>
+        <div class="form-group">
+            <label for="ticketCostByCash">Ticket Cost By Cash</label>
+            <input type="number" id="ticketCostByCash" required>
+        </div>
+        <button class="button" onclick="calculateResult()">Calculate</button>
+        <div class="result" id="result"></div>
+        <div class="percentage" id="percentage"></div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            var milesCost = parseFloat(document.getElementById('MilesCost').value);
+            var ticketCostByMiles = parseInt(document.getElementById('ticketCostByMiles').value);
+            var taxes = parseInt(document.getElementById('taxes').value);
+            var ticketCostByCash = parseInt(document.getElementById('ticketCostByCash').value);
+
+            var result = (milesCost * ticketCostByMiles + taxes) < ticketCostByCash ? "Miles" : "Cash";
+            var percentage = Math.round((1 - (milesCost * ticketCostByMiles + taxes) / ticketCostByCash) * 100);
+
+            document.getElementById('result').innerHTML = 'Result = <span>' + result + '</span>';
+            document.getElementById('percentage').innerHTML = 'You save <span>' + percentage + '%</span> by choosing ' + result;
+        }
+    </script>
+</body>
+</html>
