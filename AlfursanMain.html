@@ -147,7 +147,7 @@
             const ticketCostByCash = parseInt(document.getElementById('ticketCostByCash').value);
 
             const result = (milesCost * ticketCostByMiles + taxes) < ticketCostByCash ? "Miles" : "Cash";
-            const percentage = Math.round(((ticketCostByCash - (milesCost * ticketCostByMiles + taxes)) / ticketCostByCash) * 100);
+            const percentage = Math.abs(Math.round(((ticketCostByCash - (milesCost * ticketCostByMiles + taxes)) / ticketCostByCash) * 100));
 
 
             document.getElementById('result').innerHTML = `Result = <span>${result}</span>`;
