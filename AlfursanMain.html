@@ -149,8 +149,8 @@
             var result = (milesCost * ticketCostByMiles + taxes) < ticketCostByCash ? "Miles" : "Cash";
             var percentage = Math.round((1 - (milesCost * ticketCostByMiles + taxes) / ticketCostByCash) * 100);
 
-            document.getElementById('result').innerHTML = 'Result = <span>' + result + '</span>';
-            document.getElementById('percentage').innerHTML = 'You save <span>' + percentage + '%</span> by choosing ' + result;
+            document.getElementById('result').innerHTML = '<p>Result = <span>' + result + '</span></p>';
+            document.getElementById('percentage').innerHTML = '<p>You save <span>' + percentage + '%</span> by choosing ' + result + '</p>';
         }
         
         function resetValues() {
