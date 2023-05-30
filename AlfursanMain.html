@@ -29,15 +29,15 @@
         text-align: center;
         margin-bottom: 20px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        font-size: 24px; /* Increased font size */
-        font-weight: bold; /* Added font weight */
+        font-size: 24px;
+        font-weight: bold;
     }
 
     p {
         color: #555;
         margin-bottom: 10px;
-        font-size: 16px; /* Increased font size */
-        font-weight: bold; /* Added font weight */
+        font-size: 16px;
+        font-weight: bold;
     }
 
     .form-group {
@@ -47,8 +47,8 @@
     .form-group label {
         display: block;
         margin-bottom: 5px;
-        font-size: 16px; /* Increased font size */
-        font-weight: bold; /* Added font weight */
+        font-size: 16px;
+        font-weight: bold;
     }
 
     .form-group input {
@@ -60,7 +60,7 @@
         background-color: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(5px);
         box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-        font-size: 16px; /* Increased font size */
+        font-size: 16px;
     }
 
     .button {
@@ -75,8 +75,8 @@
         cursor: pointer;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        font-size: 16px; /* Increased font size */
-        font-weight: bold; /* Added font weight */
+        font-size: 16px;
+        font-weight: bold;
     }
 
     .result {
@@ -85,8 +85,8 @@
         margin-top: 20px;
         text-align: center;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        font-size: 20px; /* Increased font size */
-        font-weight: bold; /* Added font weight */
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .result span {
@@ -99,8 +99,8 @@
         margin-top: 20px;
         text-align: center;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        font-size: 20px; /* Increased font size */
-        font-weight: bold; /* Added font weight */
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .percentage span {
@@ -141,17 +141,17 @@
 
     <script>
         function calculateResult() {
-var milesCost = parseFloat(document.getElementById('MilesCost').value);
-var ticketCostByMiles = parseInt(document.getElementById('ticketCostByMiles').value);
-var taxes = parseInt(document.getElementById('taxes').value);
-var ticketCostByCash = parseInt(document.getElementById('ticketCostByCash').value);
+            var milesCost = parseFloat(document.getElementById('MilesCost').value);
+            var ticketCostByMiles = parseInt(document.getElementById('ticketCostByMiles').value);
+            var taxes = parseInt(document.getElementById('taxes').value);
+            var ticketCostByCash = parseInt(document.getElementById('ticketCostByCash').value);
 
-var result = (milesCost * ticketCostByMiles + taxes) < ticketCostByCash ? "Miles" : "Cash";
-var percentage = taxes > 0 ? Math.round((1 - (milesCost * ticketCostByMiles + taxes) / ticketCostByCash) * 100) : 0;
+            var result = (milesCost * ticketCostByMiles + taxes) <= ticketCostByCash ? "Miles" : "Cash";
+            var percentage = Math.abs(Math.round(((ticketCostByCash - (milesCost * ticketCostByMiles + taxes)) / ticketCostByCash) * 100));
 
-document.getElementById('result').innerHTML = 'Result = <span>' + result + '</span>';
-document.getElementById('percentage').innerHTML = 'You save <span>' + percentage + '%</span> by choosing ' + result;
-}
+            document.getElementById('result').innerHTML = 'Result = <span>' + result + '</span>';
+            document.getElementById('percentage').innerHTML = 'You save <span>' + percentage + '%</span> by choosing ' + result;
+        }
         
         function resetValues() {
             document.getElementById('MilesCost').value = '';
