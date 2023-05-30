@@ -118,11 +118,11 @@
     <div class="container">
         <h1>ALFURSAN Calculator</h1>
         <div class="form-group">
-            <label for="MilesCost">One Miles Cost</label>
+            <label for="MilesCost">One Mile Cost</label>
             <input type="number" id="MilesCost" step="0.001" required>
         </div>
         <div class="form-group">
-            <label for="ticketCostByMiles">Ticket Cost By Miles </label>
+            <label for="ticketCostByMiles">Ticket Cost by Miles</label>
             <input type="number" id="ticketCostByMiles" required>
         </div>
         <div class="form-group">
@@ -130,7 +130,7 @@
             <input type="number" id="taxes" required>
         </div>
         <div class="form-group">
-            <label for="ticketCostByCash">Ticket Cost By Cash</label>
+            <label for="ticketCostByCash">Ticket Cost by Cash</label>
             <input type="number" id="ticketCostByCash" required>
         </div>
         <button class="button" onclick="calculateResult()">Calculate</button>
@@ -146,7 +146,7 @@
             var taxes = parseInt(document.getElementById('taxes').value);
             var ticketCostByCash = parseInt(document.getElementById('ticketCostByCash').value);
 
-            var result = (milesCost * ticketCostByMiles + taxes) <= ticketCostByCash ? "Miles" : "Cash";
+            var result = (milesCost * ticketCostByMiles + taxes) < ticketCostByCash ? "Miles" : "Cash";
             var percentage = Math.abs(Math.round(((ticketCostByCash - (milesCost * ticketCostByMiles + taxes)) / ticketCostByCash) * 100));
 
             document.getElementById('result').innerHTML = 'Result = <span>' + result + '</span>';
