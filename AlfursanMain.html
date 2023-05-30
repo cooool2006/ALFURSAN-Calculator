@@ -116,7 +116,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Alfursan Calculator</h1>
+        <h1>ALFURSAN Calculator</h1>
         <div class="form-group">
             <label for="MilesCost">One Miles Cost</label>
             <input type="number" id="MilesCost" step="0.001" required>
@@ -149,8 +149,8 @@
             var result = (milesCost * ticketCostByMiles + taxes) < ticketCostByCash ? "Miles" : "Cash";
             var percentage = Math.round((1 - (milesCost * ticketCostByMiles + taxes) / ticketCostByCash) * 100);
 
-            document.getElementById('result').innerHTML = '<p><span style="color: blue;">Result = ' + result + '</span></p>';
-            document.getElementById('percentage').innerHTML = '<p><span style="color: blue;">You save ' + percentage + '% by choosing ' + result + '</span></p>';
+            document.getElementById('result').innerHTML = 'Result = <span>' + result + '</span>';
+            document.getElementById('percentage').innerHTML = 'You save <span>' + percentage + '%</span> by choosing ' + result;
         }
         
         function resetValues() {
